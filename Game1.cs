@@ -8,6 +8,14 @@ namespace Monogame_Part2_assignment
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        Texture2D footballTexture;
+        Texture2D soccerTexture;
+        Rectangle footballRect;
+        Rectangle soccerRect;
+        int x1 = 0;
+        int y1 = 0;
+        int x2 = 0;
+        int y2 = 0;
 
         public Game1()
         {
@@ -19,8 +27,10 @@ namespace Monogame_Part2_assignment
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            _graphics.PreferredBackBufferHeight = 640;
-            _graphics.PreferredBackBufferWidth = 640;
+            footballRect = new Rectangle(x1, y1, 80, 80);
+            soccerRect = new Rectangle((x2 + 81), y2, 80, 80);
+            _graphics.PreferredBackBufferHeight = 800;
+            _graphics.PreferredBackBufferWidth = 800;
             _graphics.ApplyChanges();
             base.Initialize();
         }
@@ -28,7 +38,8 @@ namespace Monogame_Part2_assignment
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            footballTexture = Content.Load<Texture2D>("football");
+            soccerTexture = Content.Load<Texture2D>("soccerball");
             // TODO: use this.Content to load your game content here
         }
 
@@ -47,6 +58,13 @@ namespace Monogame_Part2_assignment
             GraphicsDevice.Clear(Color.MonoGameOrange);
 
             // TODO: Add your drawing code here
+            _spriteBatch.Begin();
+            while ()
+            {
+                _spriteBatch.Draw(footballTexture, footballRect, Color.White);
+            }
+            _spriteBatch.Draw(soccerTexture, soccerRect, Color.White);
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
